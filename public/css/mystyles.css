@@ -1,0 +1,37 @@
+
+body {
+  background-color: #E8ECEF;
+}
+
+.centered {
+    padding-top: 20px;
+    padding-bottom: 0px;
+    text-align: center;
+}
+
+.secret-text {
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  background-color: rgb(168, 119, 119);
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.rankpicture {
+  width: 20%;
+}
+
+.ranking {
+  width: 2%;
+}
+
+#candidate-details p{
+  margin: 0;
+}

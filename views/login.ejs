@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron centered" style="padding-bottom: 10px;">
+  <div class="container">
+    <h1 class="display-3">Master of Radiology</h1>
+    <p class="lead">Conjoint Entrance Exam 2021</p>
+  </div>
+</div>
+
+
+<div class="container mt-5">
+  <h1>Login</h1>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <label for="username">IC Number</label>
+              <input type="username" class="form-control" name="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-dark">Login</button>
+          </form>
+          <% if (locals.messagelogin) { %>
+            <p><%= locals.messagelogin %></p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-body">
+          <h3>Instruction</h3>
+          <p>
+            Please login with your registered identity card number.
+          </p>
+          <p>
+            The password will be emailed to you in the morning of the exam day.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<%- include('partials/footer') %>

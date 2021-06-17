@@ -1,0 +1,99 @@
+<%- include('partials/header') %>
+
+
+<div class="container" style="padding-top: 40px;">
+    <h2>Candidate Details</h2>
+    <hr>
+  
+    <div style="margin: 0; padding: 0;">
+      <p><strong>Name:</strong>  <%= locals.userData.fullname %></p>
+      <p><strong>IC:</strong> <%= locals.userData.username %></p>
+      <p><strong>Email: </strong> <%= locals.userData.email %></p>
+    </div>
+
+    <hr>
+
+</div>
+
+
+
+<div class="container" style="padding-top: 40px;">
+    <h2>OSCE Answers</h2>
+    <hr>
+  
+    <div style="margin: 0; padding: 0;">
+        <ol id="osce_list">
+        </ol>
+    </div>
+    <hr>    
+</div>
+
+
+<div class="container" style="padding-top: 40px;">
+    <h2>Rapids Answers</h2>
+    <hr>
+  
+    <div style="margin: 0; padding: 0;">
+        <ol id="rapid_list">
+        </ol>
+    </div>
+    <hr>
+
+</div>
+
+<p style="text-align: center;">Powered by Eric Chung</p>
+
+
+<p id="osceanswer" style="display: none;">
+    <%= locals.osceanswer %>
+</p>
+<p id="rapidanswer" style="display: none;">
+    <%= locals.rapidanswer %>
+</p>
+
+
+<script>
+    let grab_osce = $("#osceanswer").html();
+    let osce_object = JSON.parse(grab_osce);
+    for (key in osce_object[0]) {
+        // create list element
+        let list = document.createElement("li");
+        // create paragraph element and assigned author name
+        let paragraph = document.createElement("p");
+        paragraph.innerHTML = key + ":   " + osce_object[0][key];
+        list.appendChild(paragraph);
+        document.getElementById("osce_list").appendChild(list);
+     } 
+
+    let grab_rapid = $("#rapidanswer").html();
+    let rapid_object = JSON.parse(grab_rapid);
+
+    for (key in rapid_object[0]) {
+        // create list element
+        let list = document.createElement("li");
+        // create paragraph element and assigned author name
+        let paragraph = document.createElement("p");
+        paragraph.innerHTML = key + ":   " + rapid_object[0][key];
+        list.appendChild(paragraph);
+        document.getElementById("rapid_list").appendChild(list);
+     } 
+</script>
+
+
+<style>
+.container {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+p {
+    font-size: 22px;
+}
+</style>
+
+
+
+
+
+
+<%- include('partials/footer') %>

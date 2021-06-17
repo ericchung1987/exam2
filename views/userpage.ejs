@@ -1,0 +1,155 @@
+<%- include('partials/header') %>
+
+<!-- Header - think of moving this to header ejs -->
+<div class="jumbotron centered" style="padding-bottom: 10px;">
+  <div class="container">
+    <h1 class="display-3">Master of Radiology</h1>
+    <p class="lead">Conjoint Entrance Exam 2021</p>
+  </div>
+</div>
+
+<div class="container" id="candidate-details">
+  <h2>Candidate Details</h2>
+
+  <div style="margin: 0; padding: 0;">
+    <p>Name: <%= locals.userData.fullname %></p>
+    <p>IC: <%= locals.userData.username %></p>
+  </div>
+  <form style="padding-top: 10px;" class="form-inline my-2 my-lg-0" method="get" action="/logout">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+  </form>
+
+</div>
+<br>
+
+
+<div class="container">
+  <h2>Instruction</h2>
+  <p>
+    This will be a remotely proctored test so please ensure you have good internet connectivity and webcam video.
+  </p>
+  <p>
+    The online test will consist of <strong>OSCE (20 questions)</strong> and <strong>Rapid Reporting (25 questions)</strong> components, 
+    to be completed within 75 minutes.
+  </p>
+  <p>You will have <strong>45 minutes</strong> for the OSCE module and <strong>30 minutes</strong> for the rapid module.</p>
+  <i>Do not click the back or refresh button or your test will be at risk of being voided.</i>
+  <br><br>
+
+  <p>
+    You need to complete the <strong>OSCE component</strong> before proceeding to the <strong>Rapid Reporting</strong> component. 
+  </p>
+ 
+  <hr>
+
+</div>
+
+<div class="container">
+  <% if(locals.userData.osce_started === true && locals.userData.osce_completed === false){ %>
+  <p>
+    You have started your test and have restarted your browser. All your answer has been loss, now click continue to
+    continue your test
+  </p>
+  <p style="display: none;" id="oscetime">
+    <%= locals.userData.osce_starttime %>
+  </p>
+  <p>You have started at OSCE test at: <strong id="oscedate"></strong></p>
+  <a class="btn btn-primary" href="/?type=quiz" role="button">Continue OSCE Test</a>
+  <%} %>
+
+  <% if(locals.userData.osce_completed === false && locals.userData.osce_started === false ){ %>
+    <p>
+      The OSCE module consist of 20 questions, there will be alphabet labelled over the anatomical in question. 
+      Each question will have 4-5 labels that you will need to fill in. 
+      You have <strong>45 minutes</strong> to answer all <strong>20 questions</strong>.
+    </p>
+    <p>
+      When u have put in all your answer, you may click on the <strong>submit button</strong> to end the module.
+    </p>
+  <a class="btn btn-primary" href="/?type=quiz" role="button">Start OSCE test</a>
+  <%} %>
+
+  <% if(locals.userData.rapid_completed === false && locals.userData.osce_completed === true && locals.userData.rapid_started === false ){ %>
+    <p>
+      You have completed OSCE test, Please start you Rapid test by clicking on the button below
+    </p>
+    <p>
+      The <strong>Rapid Reporting</strong> component will consist of <strong>normal</strong> and <strong>abnormal</strong> radiographs. 
+    </p>
+
+    <p>
+      If the radiograph is <strong>normal</strong>, just write “Normal”. If the radiograph is <strong>abnormal</strong>, please state the diagnosis or abnormality.
+    </p>
+    <p>
+      You have <strong>30 minutes</strong> to answer all <strong>25 questions</strong>.
+    </p>
+    <p>
+      When u have put in all your answer, you may click on the <strong>submit button</strong> to end the module.
+    </p>
+    
+  <a class="btn btn-primary" href="/?type=rapid" role="button">Start Rapid test</a>
+  <%} %>
+
+  <% if(locals.userData.rapid_started === true && locals.userData.rapid_completed === false){ %>
+    <p>
+      You have started your test and have restarted your browser. All your answer has been loss, now click continue to
+      continue your test
+    </p>
+    <p style="display: none;" id="rapidtime">
+      <%= locals.userData.rapid_starttime %>
+    </p>
+    <p>You have started at Rapid test at: <strong id="rapiddate"></strong></p>
+    <a class="btn btn-primary" href="/?type=rapid" role="button">Continue Rapid Test</a>
+    <%} %>
+
+
+  <% if(locals.userData.osce_completed === true && locals.userData.rapid_completed=== true){ %>
+  <div class="container">
+    <p>
+      You have completed the test, <strong>congratulation</strong>.
+    </p>
+    <p>
+      There will be an online interview by the conjoint board. Somewhere between <strong>21-24 June 2021</strong>.
+    </p>
+    <p>
+      We will inform you the link and your timeslot closer to the interview. 
+    </p>
+    <p>
+      You are required to be on standby 30 minutes before your allocated time slot.	Please ensure that you have good internet connectivity and webcam video.
+    </p>
+  </div>
+
+  <%} %>
+
+
+  <br>
+  <hr>
+  <h3>Status</h3>
+  <p><strong>OSCE Completed - </strong> <%= locals.userData.osce_completed %> </p>
+  <p><strong>Rapid Completed - </strong> <%= locals.userData.rapid_completed %> </p>
+  <br>
+  <br>
+  <p style="text-align: center;">Powered by Eric Chung</p>
+</div>
+
+
+<script>
+  $(document).ready(function () {
+    let time = $("#oscetime").html();
+    console.log(time);
+    let inttime = parseInt(time)
+    let date = new Date(inttime);
+    console.log(date);
+    $("#oscedate").html(date);
+  });
+
+  $(document).ready(function () {
+    let time = $("#rapidtime").html();
+    console.log(time);
+    let inttime = parseInt(time)
+    let date = new Date(inttime);
+    console.log(date);
+    $("#rapiddate").html(date);
+  });
+</script>
+<%- include('partials/footer') %>

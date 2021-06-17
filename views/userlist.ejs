@@ -1,0 +1,50 @@
+<%- include('partials/header') %>
+
+<!-- Header - think of moving this to header ejs -->
+<div class="jumbotron centered" style="padding-bottom: 10px;">
+  <div class="container">
+    <h1 class="display-3">Master of Radiology</h1>
+    <p class="lead">Conjoint Entrance Exam 2021</p>
+  </div>
+</div>
+
+<p style="display: none;" id="userid"><%= users %></p>
+
+<div class="container">
+  <table id="table">
+    <thead>
+    <tr>
+  
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+  
+    </tr>
+  
+    </tbody>
+  </table>
+
+</div>
+
+<script src="js/tablegen.js"></script>
+
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  </style>
+
+<%- include('partials/footer') %>

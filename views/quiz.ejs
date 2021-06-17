@@ -1,0 +1,660 @@
+<%- include('partials/header') %>
+<% if(locals.userData.osce_completed === false){ %>
+<p style="display: none;" id="time"><%= locals.userData.osce_starttime %></p>
+<script src="library/ejs.min.js"></script>
+
+
+<div class="container" style="padding-top: 0px;">
+    <h1 id="question_title"></h1>
+</div>
+<div id="quiz-container">
+    <div class="container">
+        <div id="timeholder">
+            <p>
+                <%= userData.username %>
+            </p>
+            <br>
+            <p>
+                <%= userData.fullname %>
+            </p>
+            <br>
+            <div style="position: fixed;">
+                <p>Timer: </p>
+                <p id="mins"></p>
+                <p id="secs"></p>
+                <h2 id="end"></h2>
+            </div>
+
+        </div>
+        <p style="display: none;" id="username"><%= userData.username %></p>
+    </div>
+</div>
+
+<h2 style="text-align: center;">OSCE REPORTING</h2>
+<form action="/osce" method="POST" id="question_form">
+    <section><span id="figures"></span>
+        <input type="hidden" name="username" value="<%= userData.username %>">
+        <!-- Question 1 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 1</h3>
+            <figure id="figure-1" class="figure">
+                <img onclick="openImageViewer('figure-1')" src="/images/osce/1.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 1">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_1A">Label A</label>
+                    <input type="text" class="form-control" id="question_1A" name="question_1A">
+                    <label for="question_1B">Label B</label>
+                    <input type="text" class="form-control" id="question_1B" name="question_1B">
+                    <label for="question_1C">Label C</label>
+                    <input type="text" class="form-control" id="question_1C" name="question_1C">
+                    <label for="question_1D">Label D</label>
+                    <input type="text" class="form-control" id="question_1D" name="question_1D">
+                    <label for="question_1E">Label E</label>
+                    <input type="text" class="form-control" id="question_1E" name="question_1E">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Question 2 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 2</h3>
+            <figure id="figure-2" class="figure">
+                <img onclick="openImageViewer('figure-2')" src="/images/osce/2.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 2">
+            </figure>
+            <figure id="figure-2b" class="figure">
+                <img onclick="openImageViewer('figure-2b')" src="/images/osce/2b.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 2b">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_2A">Label A</label>
+                    <input type="text" class="form-control" id="question_2A" name="question_2A">
+                    <label for="question_2B">Label B</label>
+                    <input type="text" class="form-control" id="question_2B" name="question_2B">
+                    <label for="question_2C">Label C</label>
+                    <input type="text" class="form-control" id="question_2C" name="question_2C">
+                    <label for="question_2D">Label D</label>
+                    <input type="text" class="form-control" id="question_2D" name="question_2D">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 3 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 3</h3>
+            <figure id="figure-3" class="figure">
+                <img onclick="openImageViewer('figure-3')" src="/images/osce/3.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 3">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_3A">Label A</label>
+                    <input type="text" class="form-control" id="question_3A" name="question_3A">
+                    <label for="question_3B">Label B</label>
+                    <input type="text" class="form-control" id="question_3B" name="question_3B">
+                    <label for="question_3C">Label C</label>
+                    <input type="text" class="form-control" id="question_3C" name="question_3C">
+                    <label for="question_3D">Label D</label>
+                    <input type="text" class="form-control" id="question_3D" name="question_3D">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 4 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 4</h3>
+            <figure id="figure-4" class="figure">
+                <img onclick="openImageViewer('figure-4')" src="/images/osce/4.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 4">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_4A">Label A</label>
+                    <input type="text" class="form-control" id="question_4A" name="question_4A">
+                    <label for="question_4B">Label B</label>
+                    <input type="text" class="form-control" id="question_4B" name="question_4B">
+                    <label for="question_4C">Label C</label>
+                    <input type="text" class="form-control" id="question_4C" name="question_4C">
+                    <label for="question_4D">Label D</label>
+                    <input type="text" class="form-control" id="question_4D" name="question_4D">
+                    <label for="question_4E">Label E</label>
+                    <input type="text" class="form-control" id="question_4E" name="question_4E">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Question 5 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 5</h3>
+            <figure id="figure-5" class="figure">
+                <img onclick="openImageViewer('figure-5')" src="/images/osce/5.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 5">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_5A">Label A</label>
+                    <input type="text" class="form-control" id="question_5A" name="question_5A">
+                    <label for="question_5B">Label B</label>
+                    <input type="text" class="form-control" id="question_5B" name="question_5B">
+                    <label for="question_5C">Label C</label>
+                    <input type="text" class="form-control" id="question_5C" name="question_5C">
+                    <label for="question_5D">Label D</label>
+                    <input type="text" class="form-control" id="question_5D" name="question_5D">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 6 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 6</h3>
+            <figure id="figure-6" class="figure">
+                <img onclick="openImageViewer('figure-6')" src="/images/osce/6.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 6">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_6A">Label A</label>
+                    <input type="text" class="form-control" id="question_6A" name="question_6A">
+                    <label for="question_6B">Label B</label>
+                    <input type="text" class="form-control" id="question_6B" name="question_6B">
+                    <label for="question_6C">Label C</label>
+                    <input type="text" class="form-control" id="question_6C" name="question_6C">
+                    <label for="question_6D">Label D</label>
+                    <input type="text" class="form-control" id="question_6D" name="question_6D">
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+        <!-- Question 7 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 7</h3>
+            <figure id="figure-7" class="figure">
+                <img onclick="openImageViewer('figure-7')" src="/images/osce/7.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 7">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_7A">Label A</label>
+                    <input type="text" class="form-control" id="question_7A" name="question_7A">
+                    <label for="question_7B">Label B</label>
+                    <input type="text" class="form-control" id="question_7B" name="question_7B">
+                    <label for="question_7C">Label C</label>
+                    <input type="text" class="form-control" id="question_7C" name="question_7C">
+                    <label for="question_7D">Label D</label>
+                    <input type="text" class="form-control" id="question_7D" name="question_7D">
+                    <label for="question_7E">Label E</label>
+                    <input type="text" class="form-control" id="question_7E" name="question_7E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 8 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 8</h3>
+            <figure id="figure-8" class="figure">
+                <img onclick="openImageViewer('figure-8')" src="/images/osce/8.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 8">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_8A">Label A</label>
+                    <input type="text" class="form-control" id="question_8A" name="question_8A">
+                    <label for="question_8B">Label B</label>
+                    <input type="text" class="form-control" id="question_8B" name="question_8B">
+                    <label for="question_8C">Label C</label>
+                    <input type="text" class="form-control" id="question_8C" name="question_8C">
+                    <label for="question_8D">Label D</label>
+                    <input type="text" class="form-control" id="question_8D" name="question_8D">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 9 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 9</h3>
+            <figure id="figure-9" class="figure">
+                <img onclick="openImageViewer('figure-9')" src="/images/osce/9.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 9">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_9A">Label A</label>
+                    <input type="text" class="form-control" id="question_9A" name="question_9A">
+                    <label for="question_9B">Label B</label>
+                    <input type="text" class="form-control" id="question_9B" name="question_9B">
+                    <label for="question_9C">Label C</label>
+                    <input type="text" class="form-control" id="question_9C" name="question_9C">
+                    <label for="question_9D">Label D</label>
+                    <input type="text" class="form-control" id="question_9D" name="question_9D">
+                    <label for="question_9E">Label E</label>
+                    <input type="text" class="form-control" id="question_9E" name="question_9E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 10 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 10</h3>
+            <figure id="figure-10a" class="figure">
+                <img onclick="openImageViewer('figure-10a')" src="/images/osce/10a.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 10">
+            </figure>
+            <figure id="figure-10b" class="figure">
+                <img onclick="openImageViewer('figure-10b')" src="/images/osce/10b.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 10b">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_10A">Label A</label>
+                    <input type="text" class="form-control" id="question_10A" name="question_10A">
+                    <label for="question_10B">Label B</label>
+                    <input type="text" class="form-control" id="question_10B" name="question_10B">
+                    <label for="question_10C">Label C</label>
+                    <input type="text" class="form-control" id="question_10C" name="question_10C">
+                    <label for="question_10D">Label D</label>
+                    <input type="text" class="form-control" id="question_10D" name="question_10D">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 11 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 11</h3>
+            <figure id="figure-11" class="figure">
+                <img onclick="openImageViewer('figure-11')" src="/images/osce/11.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 11">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_11A">Label A</label>
+                    <input type="text" class="form-control" id="question_11A" name="question_11A">
+                    <label for="question_11B">Label B</label>
+                    <input type="text" class="form-control" id="question_11B" name="question_11B">
+                    <label for="question_11C">Label C</label>
+                    <input type="text" class="form-control" id="question_11C" name="question_11C">
+                    <label for="question_11D">Label D</label>
+                    <input type="text" class="form-control" id="question_11D" name="question_11D">
+                    <label for="question_11E">Label E</label>
+                    <input type="text" class="form-control" id="question_11E" name="question_11E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 12 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 12</h3>
+            <figure id="figure-12a" class="figure">
+                <img onclick="openImageViewer('figure-12a')" src="/images/osce/12a.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 12a">
+            </figure>
+            <figure id="figure-12b" class="figure">
+                <img onclick="openImageViewer('figure-12b')" src="/images/osce/12b.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 12b">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_12A">Label A</label>
+                    <input type="text" class="form-control" id="question_12A" name="question_12A">
+                    <label for="question_12B">Label B</label>
+                    <input type="text" class="form-control" id="question_12B" name="question_12B">
+                    <label for="question_12C">Label C</label>
+                    <input type="text" class="form-control" id="question_12C" name="question_12C">
+                    <label for="question_12D">Label D</label>
+                    <input type="text" class="form-control" id="question_12D" name="question_12D">
+                    <label for="question_12E">Label E</label>
+                    <input type="text" class="form-control" id="question_12E" name="question_12E">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <!-- Question 13 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 13</h3>
+            <figure id="figure-13" class="figure">
+                <img onclick="openImageViewer('figure-13')" src="/images/osce/13.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 13">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_13A">Label A</label>
+                    <input type="text" class="form-control" id="question_13A" name="question_13A">
+                    <label for="question_13B">Label B</label>
+                    <input type="text" class="form-control" id="question_13B" name="question_13B">
+                    <label for="question_13C">Label C</label>
+                    <input type="text" class="form-control" id="question_13C" name="question_13C">
+                    <label for="question_13D">Label D</label>
+                    <input type="text" class="form-control" id="question_13D" name="question_13D">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 14 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 14</h3>
+            <figure id="figure-14" class="figure">
+                <img onclick="openImageViewer('figure-14')" src="/images/osce/14.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 14">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_14A">Label A</label>
+                    <input type="text" class="form-control" id="question_14A" name="question_14A">
+                    <label for="question_14B">Label B</label>
+                    <input type="text" class="form-control" id="question_14B" name="question_14B">
+                    <label for="question_14C">Label C</label>
+                    <input type="text" class="form-control" id="question_14C" name="question_14C">
+                    <label for="question_14D">Label D</label>
+                    <input type="text" class="form-control" id="question_14D" name="question_14D">
+                    <label for="question_14E">Label E</label>
+                    <input type="text" class="form-control" id="question_14E" name="question_14E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 15 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 15</h3>
+            <figure id="figure-15" class="figure">
+                <img onclick="openImageViewer('figure-15')" src="/images/osce/15.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 15">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_15A">Label A</label>
+                    <input type="text" class="form-control" id="question_15A" name="question_15A">
+                    <label for="question_15B">Label B</label>
+                    <input type="text" class="form-control" id="question_15B" name="question_15B">
+                    <label for="question_15C">Label C</label>
+                    <input type="text" class="form-control" id="question_15C" name="question_15C">
+                    <label for="question_15D">Label D</label>
+                    <input type="text" class="form-control" id="question_15D" name="question_15D">
+                    <label for="question_15E">Label E</label>
+                    <input type="text" class="form-control" id="question_15E" name="question_15E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 16 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 16</h3>
+            <figure id="figure-16" class="figure">
+                <img onclick="openImageViewer('figure-16')" src="/images/osce/16.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 16">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_16A">Label A</label>
+                    <input type="text" class="form-control" id="question_16A" name="question_16A">
+                    <label for="question_16B">Label B</label>
+                    <input type="text" class="form-control" id="question_16B" name="question_16B">
+                    <label for="question_16C">Label C</label>
+                    <input type="text" class="form-control" id="question_16C" name="question_16C">
+                    <label for="question_16D">Label D</label>
+                    <input type="text" class="form-control" id="question_16D" name="question_16D">
+                    <label for="question_16E">Label E</label>
+                    <input type="text" class="form-control" id="question_16E" name="question_16E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 17 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 17</h3>
+            <figure id="figure-17" class="figure">
+                <img onclick="openImageViewer('figure-17')" src="/images/osce/17.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 17">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_17A">Label A</label>
+                    <input type="text" class="form-control" id="question_17A" name="question_17A">
+                    <label for="question_17B">Label B</label>
+                    <input type="text" class="form-control" id="question_17B" name="question_17B">
+                    <label for="question_17C">Label C</label>
+                    <input type="text" class="form-control" id="question_17C" name="question_17C">
+                    <label for="question_17D">Label D</label>
+                    <input type="text" class="form-control" id="question_17D" name="question_17D">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 18 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 18</h3>
+            <figure id="figure-18" class="figure">
+                <img onclick="openImageViewer('figure-18')" src="/images/osce/18.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 18">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_18A">Label A</label>
+                    <input type="text" class="form-control" id="question_18A" name="question_18A">
+                    <label for="question_18B">Label B</label>
+                    <input type="text" class="form-control" id="question_18B" name="question_18B">
+                    <label for="question_18C">Label C</label>
+                    <input type="text" class="form-control" id="question_18C" name="question_18C">
+                    <label for="question_18D">Label D</label>
+                    <input type="text" class="form-control" id="question_18D" name="question_18D">
+                    <label for="question_18E">Label E</label>
+                    <input type="text" class="form-control" id="question_18E" name="question_18E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 19 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 19</h3>
+            <figure id="figure-19" class="figure">
+                <img onclick="openImageViewer('figure-19')" src="/images/osce/19.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 19">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_19A">Label A</label>
+                    <input type="text" class="form-control" id="question_19A" name="question_19A">
+                    <label for="question_19B">Label B</label>
+                    <input type="text" class="form-control" id="question_19B" name="question_19B">
+                    <label for="question_19C">Label C</label>
+                    <input type="text" class="form-control" id="question_19C" name="question_19C">
+                    <label for="question_19D">Label D</label>
+                    <input type="text" class="form-control" id="question_19D" name="question_19D">
+                    <label for="question_19E">Label E</label>
+                    <input type="text" class="form-control" id="question_19E" name="question_19E">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- Question 20 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 20</h3>
+            <figure id="figure-20" class="figure">
+                <img onclick="openImageViewer('figure-20')" src="/images/osce/20.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 20">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_20A">Label A</label>
+                    <input type="text" class="form-control" id="question_20A" name="question_20A">
+                    <label for="question_20B">Label B</label>
+                    <input type="text" class="form-control" id="question_20B" name="question_20B">
+                    <label for="question_20C">Label C</label>
+                    <input type="text" class="form-control" id="question_20C" name="question_20C">
+                    <label for="question_20D">Label D</label>
+                    <input type="text" class="form-control" id="question_20D" name="question_20D">
+                    <label for="question_20E">Label E</label>
+                    <input type="text" class="form-control" id="question_20E" name="question_20E">
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+        <h3 style="text-align: center;">Press the button below to submit your answer</h3>
+        <div style="margin-bottom: 20px;" class="text-center">
+            <button id="submitbutton" class="btn btn-secondary">Submit</button>
+        </div>
+
+    </section>
+</form>
+<%} %>
+
+<% if(locals.userData.osce_completed === true){ %>
+    <p>AHA! Caught u trying to sneak back in! <%= userData.fullname %> is in trouble!!</p>
+<%} %>
+<div class="modal fade" id="imagePopUp" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="imageHolder" class="embed-responsive">
+                    <!-- the image will be placed here by js -->
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;" class="text-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .figure {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .figure-padding {
+
+        padding: 0px 60px;
+    }
+
+    #quiz-container {
+        padding-top: 0px;
+    }
+
+    figcaption {
+        text-align: center;
+    }
+
+
+    #squareContainer {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: black
+    }
+
+    #canvas_container {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    #timeholder p {
+        display: inline;
+        font-size: 20px;
+        margin-top: 0px;
+    }
+
+    #imagePopUp .modal-content {
+        background-color: rgba(229, 204, 240, 0.95);
+        border: 0px none transparent;
+    }
+
+    #imagePopUp .modal-header {
+        border: 0px none transparent;
+    }
+
+    .question_no {
+        text-align: center;
+    }
+</style>
+
+
+<script>
+    function openImageViewer(elem_id) {
+        // Create the appropriate elements.
+        let image = document.createElement("img");
+        // get the source and text
+        let source = $('#' + elem_id + " img").attr('src');
+        // set the src and classes as well as inner text for caption
+        image.setAttribute("src", source);
+        image.setAttribute("class", "d-block w-100 img-fluid rounded");
+        // append the image and text to the respective holder
+        document.getElementById("imageHolder").appendChild(image);
+        // show the modal
+        $('#imagePopUp').modal('show');
+    }
+
+    $(document).ready(function () {
+        $(".modal").on("hidden.bs.modal", function (e) {
+            $(".modal img").remove();
+            $(".modal p").remove();
+        });
+    });
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+<script>
+    let timetorefresh = $("#time").html();
+    if (timetorefresh == "refresh") {
+        location.reload();
+    }
+</script>
+
+<script>
+    $('#submitbutton').on('click', function (event) {
+        event.preventDefault();
+            confirm("Are you sure you want to submit the answers?") ? $("#question_form").submit() : alert(
+                "Alright, the answer will not be submitted yet, when you are ready, click submit again");
+
+    });
+</script>
+
+<script src="js/quiz.js"></script>
+<%- include('partials/footer') %>

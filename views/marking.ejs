@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron centered" style="padding-bottom: 10px;">
+  <div class="container">
+    <h1 class="display-3">Master of Radiology</h1>
+    <p class="lead">Conjoint Entrance Exam 2021</p>
+  </div>
+</div>
+
+
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/askanswer" method="POST">
+            <div class="form-group">
+              <label for="username">IC Number</label>
+              <input type="username" class="form-control" name="username">
+            </div>
+            <button type="submit" class="btn btn-dark">Search Student</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<%- include('partials/footer') %>

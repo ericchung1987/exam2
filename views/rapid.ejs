@@ -1,0 +1,624 @@
+<%- include('partials/header') %>
+<% if(locals.userData.rapid_completed === false){ %>
+<p style="display: none;" id="time"><%= locals.userData.rapid_starttime %></p>
+<script src="library/ejs.min.js"></script>
+
+
+<div class="container" style="padding-top: 0px;">
+    <h1 id="question_title"></h1>
+</div>
+<div id="quiz-container">
+    <div class="container">
+        <div id="timeholder">
+            <p>
+                <%= userData.username %>
+            </p>
+            <br>
+            <p>
+                <%= userData.fullname %>
+            </p>
+            <br>
+            <div style="position: fixed;">
+                <p>Timer: </p>
+                <p id="mins"></p>
+                <p id="secs"></p>
+                <h2 id="end"></h2>
+            </div>
+
+        </div>
+        <p style="display: none;" id="username"><%= userData.username %></p>
+    </div>
+</div>
+
+<h2 style="text-align: center;">RAPID REPORTING</h2>
+<form action="/rapid" method="POST" id="question_form">
+    <section><span id="figures"></span>
+        <input type="hidden" name="username" value="<%= userData.username %>">
+        <!-- Question 1 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 1</h3>
+            <figure id="figure-1" class="figure">
+                <img onclick="openImageViewer('figure-1')" src="/images/rapids/1.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 1">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_1">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_1" name="question_1">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 2</h3>
+            <figure id="figure-2" class="figure">
+                <img onclick="openImageViewer('figure-2')" src="/images/rapids/2.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 2">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_2">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_2" name="question_2">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 3</h3>
+            <figure id="figure-3" class="figure">
+                <img onclick="openImageViewer('figure-3')" src="/images/rapids/3.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 3">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_3">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_3" name="question_3">
+                </div>
+                <hr>
+            </div>
+        </div>        
+
+        <!-- Question 4 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 4</h3>
+            <figure id="figure-4" class="figure">
+                <img onclick="openImageViewer('figure-4')" src="/images/rapids/4.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 4">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_4">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_4" name="question_4">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 5 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 5</h3>
+            <figure id="figure-5" class="figure">
+                <img onclick="openImageViewer('figure-5')" src="/images/rapids/5.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 5">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_5">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_5" name="question_5">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 6 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 6</h3>
+            <figure id="figure-6" class="figure">
+                <img onclick="openImageViewer('figure-6')" src="/images/rapids/6.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 6">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_6">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_6" name="question_6">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 7 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 7</h3>
+            <figure id="figure-7" class="figure">
+                <img onclick="openImageViewer('figure-7')" src="/images/rapids/7.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 7">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_7">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_7" name="question_7">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        <!-- Question 8 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 8</h3>
+            <figure id="figure-8" class="figure">
+                <img onclick="openImageViewer('figure-8')" src="/images/rapids/8.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 8">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_8">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_8" name="question_8">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 9 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 9</h3>
+            <figure id="figure-9" class="figure">
+                <img onclick="openImageViewer('figure-9')" src="/images/rapids/9.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 9">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_9">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_9" name="question_9">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        <!-- Question 10 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 10</h3>
+            <figure id="figure-10a" class="figure">
+                <img onclick="openImageViewer('figure-10b')" src="/images/rapids/10a.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 10a">
+            </figure>
+            <figure id="figure-10b" class="figure">
+                <img onclick="openImageViewer('figure-10b')" src="/images/rapids/10b.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 10b">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_10">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_10" name="question_10">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 11 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 11</h3>
+            <figure id="figure-11" class="figure">
+                <img onclick="openImageViewer('figure-11')" src="/images/rapids/11.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 11">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_11">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_11" name="question_11">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 12 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 12</h3>
+            <figure id="figure-12" class="figure">
+                <img onclick="openImageViewer('figure-12')" src="/images/rapids/12.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 12">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_12">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_12" name="question_12">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 13 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 13</h3>
+            <figure id="figure-13" class="figure">
+                <img onclick="openImageViewer('figure-13')" src="/images/rapids/13.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 13">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_13">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_13" name="question_13">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        
+        <!-- Question 14 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 14</h3>
+            <figure id="figure-14" class="figure">
+                <img onclick="openImageViewer('figure-14')" src="/images/rapids/14.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 14">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_14">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_14" name="question_14">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        
+        <!-- Question 15 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 15</h3>
+            <figure id="figure-15" class="figure">
+                <img onclick="openImageViewer('figure-15')" src="/images/rapids/15.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 15">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_15">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_15" name="question_15">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        
+        <!-- Question 16 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 16</h3>
+            <figure id="figure-16" class="figure">
+                <img onclick="openImageViewer('figure-16')" src="/images/rapids/16.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 16">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_16">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_16" name="question_16">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        
+        <!-- Question 17 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 17</h3>
+            <figure id="figure-17a" class="figure">
+                <img onclick="openImageViewer('figure-17a')" src="/images/rapids/17a.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 17a">
+            </figure>
+            <figure id="figure-17b" class="figure">
+                <img onclick="openImageViewer('figure-17b')" src="/images/rapids/17b.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 17b">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_17">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_17" name="question_17">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+
+        
+        <!-- Question 18 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 18</h3>
+            <figure id="figure-18" class="figure">
+                <img onclick="openImageViewer('figure-18')" src="/images/rapids/18.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 18">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_18">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_18" name="question_18">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 19 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 19</h3>
+            <figure id="figure-19" class="figure">
+                <img onclick="openImageViewer('figure-19')" src="/images/rapids/19.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 19">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_19">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_19" name="question_19">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 20 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 20</h3>
+            <figure id="figure-20" class="figure">
+                <img onclick="openImageViewer('figure-20')" src="/images/rapids/20.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 20">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_20">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_20" name="question_20">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 21 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 21</h3>
+            <figure id="figure-21" class="figure">
+                <img onclick="openImageViewer('figure-21')" src="/images/rapids/21.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 21">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_21">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_21" name="question_21">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 22 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 22</h3>
+            <figure id="figure-22" class="figure">
+                <img onclick="openImageViewer('figure-22')" src="/images/rapids/22.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 22">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_22">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_22" name="question_22">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 23 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 23</h3>
+            <figure id="figure-23" class="figure">
+                <img onclick="openImageViewer('figure-23')" src="/images/rapids/23.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 23">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_23">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_23" name="question_23">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 24 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 24</h3>
+            <figure id="figure-24" class="figure">
+                <img onclick="openImageViewer('figure-24')" src="/images/rapids/24.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 24">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_24">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_24" name="question_24">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        
+        <!-- Question 25 -->
+        <div class="container">
+            <h3 class="question_no">Exhibit 25</h3>
+            <figure id="figure-25" class="figure">
+                <img onclick="openImageViewer('figure-25')" src="/images/rapids/25.jpg"
+                    class="figure-img img-fluid rounded img-thumbnail mx-auto d-block w-50" alt="Figure 25">
+            </figure>
+            <h3 class="question_no">Answers</h3>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 ">
+                    <label for="question_25">Enter Your Answer</label>
+                    <input type="text" class="form-control" id="question_25" name="question_25">
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <h3 style="text-align: center;">Press the button below to submit your answer</h3>
+        <div style="margin-bottom: 20px;" class="text-center">
+            <button id="submitbutton" class="btn btn-secondary">Submit</button>
+        </div>
+
+    </section>
+</form>
+<%} %>
+
+<% if(locals.userData.rapid_completed === true){ %>
+    <p>AHA! Caught u trying to sneak back in! <%= userData.fullname %> is in trouble!!</p>
+<%} %>
+<div class="modal fade" id="imagePopUp" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="imageHolder" class="embed-responsive">
+                    <!-- the image will be placed here by js -->
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;" class="text-center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .figure {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .figure-padding {
+
+        padding: 0px 60px;
+    }
+
+    #quiz-container {
+        padding-top: 0px;
+    }
+
+    figcaption {
+        text-align: center;
+    }
+
+
+    #squareContainer {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: black
+    }
+
+    #canvas_container {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    #timeholder p {
+        display: inline;
+        font-size: 20px;
+        margin-top: 0px;
+    }
+
+    #imagePopUp .modal-content {
+        background-color: rgba(229, 204, 240, 0.95);
+        border: 0px none transparent;
+    }
+
+    #imagePopUp .modal-header {
+        border: 0px none transparent;
+    }
+
+    .question_no {
+        text-align: center;
+    }
+</style>
+
+
+<script>
+    function openImageViewer(elem_id) {
+        // Create the appropriate elements.
+        let image = document.createElement("img");
+        // get the source and text
+        let source = $('#' + elem_id + " img").attr('src');
+        // set the src and classes as well as inner text for caption
+        image.setAttribute("src", source);
+        image.setAttribute("class", "d-block w-100 img-fluid rounded");
+        // append the image and text to the respective holder
+        document.getElementById("imageHolder").appendChild(image);
+        // show the modal
+        $('#imagePopUp').modal('show');
+    }
+
+    $(document).ready(function () {
+        $(".modal").on("hidden.bs.modal", function (e) {
+            $(".modal img").remove();
+            $(".modal p").remove();
+        });
+    });
+    document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+<script>
+    let timetorefresh = $("#time").html();
+    if (timetorefresh == "refresh") {
+        location.reload();
+    }
+</script>
+
+<script>
+    $('#submitbutton').on('click', function (event) {
+        event.preventDefault();
+            confirm("Are you sure you want to submit the answers?") ? $("#question_form").submit() : alert(
+                "Alright, the answer will not be submitted yet, when you are ready, click submit again");
+
+    });
+</script>
+
+<script src="js/rapid.js"></script>
+<%- include('partials/footer') %>
